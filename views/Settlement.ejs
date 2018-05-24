@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href='/stylesheets/bootstrap.css'>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <style>
+        body{padding: 0}
+    </style>
+</head>
+<body>
+<header class="header-nav">
+    <a class="left"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;花之缘,用心编织你的爱</a>
+    <ul class="right">
+        <li id="my"><a href="login">你好,请登录</a></li>
+        <li><a href="zhuce">注册</a></li>
+        <li>|</li>
+        <li><a class="order">我的订单</a></li>
+        <li>|</li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">分享</a>
+            <ul class="list-services border-bot img-indent-bot jiathis_style_24x24 dropdown-menu" role="menu">
+                <li><a class="jiathis_button_qzone">QQ空间</a></li>
+                <li><a class="jiathis_button_tsina">新浪微博</a></li>
+                <li><a class="jiathis_button_tqq">QQ好友</a></li>
+                <li><a class="jiathis_button_weixin">微信</a></li>
+                <li><a class="jiathis_button_renren">人人</a></li>
+                <li><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></li>
+                <li><a class="jiathis_counter_style">更多分享</a></li>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            </ul>
+        <li>|</li>
+        <li><a class="guanzhu">我的关注</a></li>
+        <li>|</li>
+        <li><a class="gouwu"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;我的购物车</a></li>    </ul>
+</header>
+<!--导航-->
+<nav style="margin: 0">
+    <div class="nav-header">
+        <div class="nav-one">
+            <a href="/#/1"><img src="http://flower-1252579615.cossh.myqcloud.com/123.jpg" width="500px;" height="100px;"></a>
+        </div>
+        <div class="nav-two">
+            <form name="search" method="post" action="/search/">
+                <div class="input-group">
+                    <input name="keydword" type="text" class="form-control" placeholder="商品关键词">
+          <span class="input-group-btn">
+            <button class="btn" type="button" onClick="this.form.submit()" style="background-color: #FF6A00;width: 70px;color: white; font-size: 1.5rem ">搜索</button>
+          </span>
+                </div>
+            </form>
+        </div>
+        <div class="nav-three">
+            <span class="glyphicon glyphicon-earphone"> 17839353135&nbsp;&nbsp;</span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=710280094&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:710280094:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+    </div>
+    <div class="nav-footer">
+        <div class="navbar navbar-default"  ng-controller="MultiViewController">
+            <a type="button" class="btn navbar-btn col-md-1 click" href="/#/1">首页</a>
+            <a type="button" class="btn navbar-btn col-md-1" href="/#/2">鲜花</a>
+            <a type="button" class="btn navbar-btn col-md-2" href="/#/3">精品花盒</a>
+            <a type="button" class="btn navbar-btn col-md-2"  href="/#/4">自选鲜花</a>
+            <a type="button" class="btn navbar-btn col-md-2"  href="/#/5">爱情鲜花</a>
+            <a type="button" class="btn navbar-btn col-md-2" href="/#/6">永生花</a>
+            <a type="button" class="btn navbar-btn col-md-2" href="/#/7">花语大全</a>
+        </div>
+    </div>
+</nav>
+<br/>
+<div style="width: 70%;margin: 0 auto">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">未 完 成 订 单</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">历 史 订 单</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div id="cent1">
+                <%
+                if( Moneys != null){
+                Moneys.forEach(function(mon){
+                %>
+                <table style="margin: 0;width:100%;border:1px #E5E5E5 solid;" class="table1 table table-hover">
+                    <tr class="orderId">
+                        <td colspan="3">订单号：<span style="font-weight: bold"><%=mon.OrderId%></span></td>
+                        <td>总金额：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold">¥<%=(mon.OrderPrice)%></span></td>
+                    </tr>
+                    <%
+                    if( Info != null){
+                    Info.forEach(function(Info){
+                    if(mon.OrderId==Info.OrderId){
+                    %>
+                    <tr>
+                        <td><a href="breadcrumbs?usid=<%=Info.CommodityId%>"><img src="<%=Info.ImgPath%>" height="70px" width="70px;"></a></td>
+                        <td style="line-height: 70px"><a href="breadcrumbs?usid=<%=Info.CommodityId%>"><%=Info.FlowerName%></a></td>
+                        <td style="line-height: 70px">数量：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold"><%=(Info.Number)%></span></td>
+                        <td style="line-height: 70px">单价：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold">¥<%=(Info.FlowerPrice)%></span></td>
+                    </tr>
+                    <%
+                    }
+                    });
+                    }
+                    %>
+                    <tr style="text-align: center">
+                        <td colspan="2"><div class="btn btn-default revoke">撤销订单</div></td>
+                        <td colspan="2"><div class="btn payment" style="background-color: #FF6A00;color: white">付款</div></td>
+                    </tr>
+                </table>
+                <%
+                });
+                }
+                %>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <div id="cent2">
+                <%
+                if( Hist != null){
+                Hist.forEach(function(Hist){
+                %>
+                <table style="margin: 0;width:100%;border:1px #E5E5E5 solid;" class="table2 table table-hover">
+                    <tr class="orderId">
+                        <td colspan="2">订单号：<span style="font-weight: bold"><%=Hist.OrderId%></span></td>
+                        <td>总金额：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold">¥<%=Hist.OrderPrice%></span></td>
+                        <td>时间：<span style="font-weight: bold"><%=Hist.OrderTime%></span></td>
+                    </tr>
+                    <%
+                    if( Info != null){
+                    Info.forEach(function(Info){
+                    if(Hist.OrderId==Info.OrderId){
+                    %>
+                    <tr>
+                        <td><a href="breadcrumbs?usid=<%=Info.CommodityId%>"><img src="<%=Info.ImgPath%>" height="70px" width="70px;"></a></td>
+                        <td style="line-height: 70px"><a href="breadcrumbs?usid=<%=Info.CommodityId%>"><%=Info.FlowerName%></a></td>
+                        <td style="line-height: 70px">数量：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold"><%=(Info.Number)%></span></td>
+                        <td style="line-height: 70px">单价：<span style="font-size: 1.5rem;color: #FF6A00;font-weight: bold">¥<%=(Info.FlowerPrice)%></span></td>
+                    </tr>
+                    <%
+                    }
+                    });
+                    }
+                    %>
+                </table>
+                <%
+                });
+                }
+                %>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/javascripts/bootstrap.js"></script>
+<script>
+    $(function(){
+        var name=localStorage.name;
+        if(name==undefined){
+            $('#my').html('<a href="login">你好,请登录</a>');
+        }else{
+
+            $('#my').html('<a href="guanzhu?usid='+localStorage.uid+'">欢迎  '+name+'</a>');
+        }
+        var uid=localStorage.uid;
+        if(uid!=''||uid!='undefined') {
+            $('.gouwu').click(function () {
+                location.href = 'order?id=' + uid;
+            });
+            $('.order').click(function () {
+                location.href = 'Settlement?id=' + uid;
+            });
+            $('.guanzhu').click(function () {
+                location.href = 'my?id=' + uid;
+            });
+        }
+        else{
+            alert('请先登录')
+        }
+        no();
+    });
+    $('.revoke').click(function(){
+        var OrderId=$(this).parent().parent().parent().children('tr:first').children('td:first')[0].innerText;
+        console.log(OrderId.substring('4',OrderId.length));
+        var dat={
+            OrderId:OrderId.substring('4',OrderId.length),
+            UserId:localStorage.uid
+        }
+        $.post('revoke1',dat,function(){})
+        $.post('revoke2',dat,function(){})
+        $(this).parent().parent().parent().html('');
+        no();
+    });
+    $('.payment').click(function(){
+        var table=$(this).parent().parent().parent()
+        var OrderId=$(this).parent().parent().parent().children('tr:first').children('td:first')[0].innerText;
+        console.log(OrderId.substring('4',OrderId.length));
+        var time=CurentTime();
+        var dat={
+            OrderTime:time,
+            OrderId:OrderId.substring('4',OrderId.length),
+            UserId:localStorage.uid
+        }
+        if(confirm("你确定付款"))
+        {
+            $.post('payment',dat,function(res,err){
+                if(res['changedRows']==1){
+                    alert('付款成功！');
+                    table.html('');
+                    window.location.reload();
+                    no();
+                }
+
+            })
+        }
+        else
+        {}
+    })
+    function CurentTime() {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+
+        var clock = year + "-";
+
+        if(month < 10)
+            clock += "0";
+
+        clock += month + "-";
+
+        if(day < 10)
+            clock += "0";
+
+        clock += day + " ";
+
+        if(hh < 10)
+            clock += "0";
+
+        clock += hh + ":";
+        if (mm < 10) clock += '0';
+        clock += mm;
+        return(clock);
+    }
+    function no(){
+        var tab=$('.table1');
+        console.log(tab[0]);
+        if(tab.length===0){
+            console.log('123');
+            $('#cent1').html('<h3 style="text-align: center">暂无订单！</h3>');
+        }
+        var tab=$('.table2');
+        console.log(tab[0]);
+        if(tab.length===0){
+            console.log('123');
+            $('#cent2').html('<h3 style="text-align: center">暂无订单！</h3>');
+        }
+    }
+</script>
+</body>
+</html>

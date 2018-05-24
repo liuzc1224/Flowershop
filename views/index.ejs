@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html ng-app="routeMod">
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link type="text/css" rel="stylesheet" href="http://img02.hua.com/pc/assets/css/common.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.4.4/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.4.4/angular-animate.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.4.4/angular-route.min.js"></script>
+    <style>
+        body{padding: 0}
+    </style>
+    <script>
+        $(function() {
+            // 大图轮翻(5秒)
+            $('#fullCarousel').carousel({ interval: 3000 });
+            // 大图鼠标移到小圆点轮翻
+            $("#fullCarousel>ol>li").hover(function () {
+                var index = $("#fullCarousel ol li").index(this);
+                $("#fullCarousel").carousel(index);
+            });
+            var uid=localStorage.uid;
+            if(uid!=''||uid!='undefined') {
+                $('.gouwu').click(function () {
+                    location.href = 'order?id=' + uid;
+                });
+                $('.order').click(function () {
+                    location.href = 'Settlement?id=' + uid;
+                });
+                $('.guanzhu').click(function () {
+                    location.href = 'my?id=' + uid;
+                });
+            }
+            else{
+                alert('请先登录')
+            }
+        });
+    </script>
+</head>
+<body>
+<!--顶部导航-->
+<header class="header-nav">
+    <div class="left"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;花之缘,用心编织你的爱</div>
+    <ul class="right">
+        <li id="my"><a href="login">你好,请登录</a></li>
+        <li><a href="zhuce">注册</a></li>
+        <li>|</li>
+        <li><a class="order">我的订单</a></li>
+        <li>|</li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">分享</a>
+            <ul class="list-services border-bot img-indent-bot jiathis_style_24x24 dropdown-menu" role="menu">
+                <li><a class="jiathis_button_qzone">QQ空间</a></li>
+                <li><a class="jiathis_button_tsina">新浪微博</a></li>
+                <li><a class="jiathis_button_tqq">QQ好友</a></li>
+                <li><a class="jiathis_button_weixin">微信</a></li>
+                <li><a class="jiathis_button_renren">人人</a></li>
+                <li><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></li>
+                <li><a class="jiathis_counter_style">更多分享</a></li>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            </ul>
+        <li>|</li>
+        <li><a class="guanzhu">我的关注</a></li>
+        <li>|</li>
+        <li><a class="gouwu"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;我的购物车</a></li>
+    </ul>
+</header>
+<!--导航-->
+<nav style="margin: 0">
+    <div class="nav-header">
+        <div class="nav-one">
+            <a href="/#/1"><img src="http://flower-1252579615.cossh.myqcloud.com/123.jpg" width="500px;" height="100px;"></a>
+        </div>
+        <div class="nav-two">
+            <form name="search" method="post" action="/search/">
+                <div class="input-group">
+                    <input name="keydword" type="text" class="form-control" placeholder="商品关键词">
+          <span class="input-group-btn">
+            <button class="btn" type="button" onClick="this.form.submit()" style="background-color: #FF6A00;width: 70px;color: white; font-size: 1.5rem ">搜索</button>
+          </span>
+                </div>
+            </form>
+        </div>
+        <div class="nav-three">
+            <span class="glyphicon glyphicon-earphone"> 17839353135&nbsp;&nbsp;</span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=710280094&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:710280094:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+    </div>
+    <div class="nav-footer">
+        <div class="navbar navbar-default"  ng-controller="MultiViewController">
+            <!--<li role="presentation" class="active"><div href="/" target="_self">首页</div></li>-->
+            <div type="button" class="btn navbar-btn col-md-1 click" ng-click="f1()">首页</div>
+            <div type="button" class="btn navbar-btn col-md-1" ng-click="f2()">鲜花</div>
+            <div type="button" class="btn navbar-btn col-md-2" ng-click="f3()">精品花盒</div>
+            <div type="button" class="btn navbar-btn col-md-2" ng-click="f4()">自选鲜花</div>
+            <div type="button" class="btn navbar-btn col-md-2" ng-click="f5()">爱情鲜花</div>
+            <div type="button" class="btn navbar-btn col-md-2" ng-click="f6()">永生花</div>
+            <div type="button" class="btn navbar-btn col-md-2" ng-click="f7()">花语大全</div>
+            <!--<li role="presentation"><a href="flowerpage" target="_blank">鲜花</a></li>-->
+            <!--<li role="presentation"><a href="flowerpot" target="_blank">精品花盒</a></li>-->
+            <!--<li role="presentation"><a href="optional" target="_self">自选鲜花</a></li>-->
+            <!--<li role="presentation"><a href="loveflower" target="_blank">爱情鲜花</a></li>-->
+            <!--<li role="presentation"><a href="cartoon" target="_blank">漫画选花</a></li>-->
+            <!--<li role="presentation"><a href="flower" target="_blank">花语大全</a></li>-->
+        </div>
+        <div  id="myView" ng-view="myView" ng-init="init()" style="margin-top: -20px">
+
+        </div>
+    </div>
+</nav>
+<script src="/javascripts/bootstrap.js"></script>
+<script>
+    var routeMod = angular.module('routeMod', ['ngRoute']);
+    routeMod.config(['$routeProvider',function($routeProvider){
+        $routeProvider.when('/1',{
+                    templateUrl:'page',
+                    controller:'MultiViewController'
+                })
+                .when('/2',{
+                    templateUrl:'flowerpage',
+                    controller:'MultiViewController'
+                })
+                .when('/3',{
+                    templateUrl:'flowerpot',
+                    controller:'MultiViewController'
+                })
+                .when('/4',{
+                    templateUrl:'optional',
+                    controller:'MultiViewController'
+                })
+                .when('/5',{
+                    templateUrl:'loveflower',
+                    controller:'MultiViewController'
+                })
+                .when('/6',{
+                    templateUrl:'immortalflower',
+                    controller:'MultiViewController'
+                })
+                .when('/7',{
+                    templateUrl:'flower',
+                    controller:'MultiViewController'
+                })
+    }])
+
+    routeMod.controller("MultiViewController",function($scope,$log,$location){
+
+        $scope.init = function () {
+            $location.path("/1");
+        }
+        $scope.f1 = function () {
+            $log.info("f1");
+            $location.path("/1");
+        };
+        $scope.f2 = function () {
+            $log.info("f2");
+            $location.path("/2");
+        };
+        $scope.f3 = function () {
+            $log.info("f3");
+            $location.path("/3");
+        };
+        $scope.f4 = function () {
+            $log.info("f4");
+            $location.path("/4");
+        };
+        $scope.f5 = function () {
+            $log.info("f5");
+            $location.path("/5");
+        };
+        $scope.f6 = function () {
+            $log.info("f6");
+            $location.path("/6");
+        };
+        $scope.f7 = function () {
+            $log.info("f7");
+            $location.path("/7");
+        };
+    });
+    $(".nav-footer>.navbar-default>div").click(function(){
+        $(".nav-footer>.navbar-default>div").removeClass('click');
+        $(this).addClass('click');
+    });
+    function cli(){
+        $('body').click(function(evt){
+            var tname;
+            if(!e){
+                var e = window.event || evt;
+            }
+            //获取事件点击元素
+            var targ = e.target;
+            //获取元素名称
+            tname = targ.parentNode.parentNode.childNodes[1].innerHTML;
+            console.log("图片",tname);
+            localStorage.id=tname;
+            console.log("localStorage",localStorage.id);
+            window.location.href='breadcrumbs?usid='+tname;
+        })
+    }
+</script>
+
+<script>
+    $(function(){
+        var name=localStorage.name;
+        console.log(123,name);
+        if(name==undefined){
+            $('#my').html('<a href="login">你好,请登录</a>');
+        }else{
+
+            $('#my').html('<a href="guanzhu?usid='+localStorage.uid+'">欢迎  '+name+'</a>');
+        }
+    })
+</script>
+</body>
+</html>

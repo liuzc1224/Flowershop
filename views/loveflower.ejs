@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link type="text/css" rel="stylesheet" href="http://img02.hua.com/pc/assets/css/common.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href='/stylesheets/bootstrap.css'>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <style>
+        body{padding: 0}
+    </style>
+</head>
+<body style="margin: 0 auto">
+<!--<div ng-include="$root.nav" style="display: inline-block;width: 100%;padding: 0"></div>-->
+<div style="margin: 0;top:-5px;position: relative">
+    <!-- 大图轮播 -->
+    <div id="flowerCarousel" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="/#/5" target="_blank"><img src="http://img02.hua.com/pc/pimg/flower_bannerLove_01.jpg" alt="爱情鲜花" width="100%"></a>
+            </div>
+        </div>
+    </div>
+    <!-- 大图轮播 End -->
+    <!-- 筛选 -->
+    <div class="filterbar">
+        <ul class="filter-items list-inline">
+            <li class="active"><a href="?r=0">综合</a></li>
+            <li class=""><a href="?r=5">销量<span class="glyphicon glyphicon-triangle-bottom"></span></a></li>
+            <li class=""><a href="?r=1">价格<span class="glyphicon glyphicon-triangle-bottom"></span></a></li>
+            <li class=""><a href="?r=3">最新<span class="glyphicon glyphicon-triangle-bottom"></span></a></li>
+        </ul>
+        <hr/>
+    </div>
+    <div style="clear: both"></div>
+    <!-- 筛选 End -->
+    <!-- 商品列表 -->
+    <div class="grid-wrapper" style="margin: 0 auto;width: 1230px">
+        <%
+        if( Loveflowers != null){
+            Loveflowers.forEach(function(Loveflower){
+        %>
+        <div class="grid-item">
+            <div class="grid-panel">
+                <div id="id" style="display: none"><%=Loveflower.CommodityId%></div>
+                <div class="img-box" align="center">
+                    <a href="breadcrumbs?usid=<%=Loveflower.CommodityId%>" ><img width="220" height="240" src="<%=Loveflower.ImgPath%>" alt="<%=Loveflower.FlowerName%>"></a>
+                </div>
+                <div class="info-cont">
+                    <div class="price">
+                        <span class="price-sign">¥</span>
+                        <span class="price-num"><%=Loveflower.FlowerPrice%></span>
+                    </div>
+                    <div class="title">
+                        <a href="breadcrumbs?usid=<%=Loveflower.CommodityId%>" target="_blank">
+                            <span class="product-title">鲜花/<%=Loveflower.FlowerName%></span>
+                            <span class="feature">新品特价</span>
+                        </a>
+                    </div>
+                    <div class="operate">
+                        <button class="attention"><span class="ico ico-heart-d"></span>关注</button>
+                        <button class="add-cart" style="margin-left:-5px;"><span class="ico ico-cart-d"></span>加入购物车</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <%
+        });
+
+        }
+        %>
+    </div>
+</div>
+<script>
+//    function cli(){
+//        $('body').click(function(evt){
+//            var tname;
+//            if(!e){
+//                var e = window.event || evt;
+//            }
+//            //获取事件点击元素
+//            var targ = e.target;
+//            //获取元素名称
+//            tname = targ.parentNode.parentNode.childNodes[1].innerHTML;
+//            console.log("图片",tname);
+//            localStorage.id=tname;
+//            console.log("localStorage",localStorage.id);
+//            window.location.href='breadcrumbs?usid='+tname;
+//        })
+//    }
+</script>
+<!--<script>-->
+    <!--var app = angular.module('app',[]);-->
+    <!--app.config(function($controllerProvider){-->
+        <!--app.controller = $controllerProvider.register;-->
+    <!--});-->
+    <!--app.run(function($rootScope){-->
+        <!--$rootScope.nav='pagenav';-->
+<!--//        $rootScope.mb2url='controller/sec2.html'-->
+        <!--$rootScope.to1=function(){}-->
+    <!--});-->
+<!--</script>-->
+</body>
+<script>
+    $('.attention').click(function(){
+//        var name=$('#my').html();
+        var name=localStorage.name;
+        var uid=localStorage.uid;
+        console.log(localStorage.uid);
+//        console.log(name);
+//        if(name=='<a href="login">你好,请登录</a>'){
+        if(name==''||name=='undefined'){
+            alert('请先登录！')
+        }else {
+            var tname;
+            if(!e){
+                var e = window.event || evt;
+            }
+            //获取事件点击元素
+            var targ = e.target;
+            //获取元素名称
+            tname = targ.parentNode.parentNode.parentNode.childNodes[1].innerHTML;
+           var dat={
+               id:tname,
+               uid:uid
+           }
+            if(uid==''||uid=='undefined'){
+                alert('请重新登录！')
+            }else{
+                $(this).css('background-color','#FF6A00');
+                $(this).css('color','white');
+                $(this).html('<span class="ico ico-heart-d" style="color: white"></span>已关注');
+                $.post('/selectassess',dat,function(res,err){
+                    console.log(res,'465465');
+                    if(res.length==0){
+                        $.post('/insertassess',dat,function(res,err){
+                            console.log(res,'sasda')
+                            if(res['insertId']!=''){
+//                                $(this).css('background-color','#FF6A00');
+                            }else{
+                                alert('关注失败！');
+                            }
+                        })
+                    }
+                })
+            }
+        }
+    });
+    $('.add-cart').click(function(){
+        var name=localStorage.name;
+        var uid=localStorage.uid;
+        console.log(localStorage.uid);
+        if(name==''||name=='undefined'){
+            alert('请先登录！')
+        }else {
+            var tname;
+            if(!e){
+                var e = window.event || evt;
+            }
+            //获取事件点击元素
+            var targ = e.target;
+            //获取元素名称
+            tname = targ.parentNode.parentNode.parentNode.childNodes[1].innerHTML;
+            var dat={
+                id:tname,
+                uid:uid
+            }
+            if(uid==''||uid=='undefined'){
+                alert('请重新登录！')
+            }else{
+                $.post('/selectorder',dat,function(res,err){
+                    console.log(res,'loveflower')
+                    if(res.length==0){
+                        $.post('/insertorder',dat,function(res,err){
+                            if(res['affectedRows']!='0'){
+                                location.href='order?id='+uid;
+//                                $(this).css('background-color','#FF6A00');
+                            }
+                        })
+                    }
+                    else{
+                        alert('购物车已有！');
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

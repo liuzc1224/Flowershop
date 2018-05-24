@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;list-style-type:none;}
+        a,img{border:0;}
+        body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+        #cen{
+            width:400px;
+            height: 400px;
+            position:absolute;
+            left:465px;
+            top:200px;
+        }
+        td{
+            width: 50%;
+        }
+    </style>
+    <script>
+        $(function() {
+            var code = 9999;
+            function codes(){
+                var ranColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6); //随机生成颜色
+                // alert(ranColor)
+                var ranColor2 = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+                var num1 = Math.floor(Math.random() * 100);
+                var num2 = Math.floor(Math.random() * 100);
+                code = num1 + num2;
+
+                $("#code").html(num1 + "+" + num2 + "=?");
+                if ($("#code").hasClass("nocode")) {
+                    $("#code").removeClass("nocode");
+                    $("#code").addClass("code");
+
+                }
+                $("#code").css('background',ranColor);
+                $("#code").css('color',ranColor2);
+            }
+            codes();
+            $("#code").on('click',codes);
+            $("#check").click(function(){
+                if ($(".input").val() ==''){
+                    alert('验证码不能为空！')
+                }
+                else{
+                    if ($(".input").val() == code && code != 9999) {
+                        if ($("#user").val() ==''){
+                            alert('用户名不能为空！')
+                        }else{
+                            if ($("#pwd").val() ==''){
+                                alert('密码不能为空！')
+                            } else{
+                                var pwd=document.getElementById("pwd").value;
+                                var repwd=document.getElementById("repwd").value;
+                            }
+                            if(pwd!=repwd){
+                                alert('密码不一致！');
+                            }else{
+                                var dat={
+                                    userName:$("#user").val(),
+                                    Password:$("#pwd").val()
+                                };
+                                console.log(dat);
+                                $.post('/insert',dat,function(res,err){
+                                    if(res['insertId']!=''){
+                                        alert('注册成功！请前往登录');
+                                        location.href='/login';
+                                    }else{
+                                        alert('注册失败！');
+                                    }
+                                })
+                            }
+                        }
+                    }
+                    else {
+                        alert("验证码有误!");
+                        codes();
+                    }
+                }
+            });
+            var uid=localStorage.uid;
+            if(uid!=''||uid!='undefined') {
+                $('.gouwu').click(function () {
+                    location.href = 'order?id=' + uid;
+                });
+                $('.order').click(function () {
+                    location.href = 'Settlement?id=' + uid;
+                });
+                $('.guanzhu').click(function () {
+                    location.href = 'my?id=' + uid;
+                });
+            }
+            else{
+                alert('请先登录')
+            }
+        });
+    </script>
+</head>
+<body>
+
+
+<header class="header-nav">
+    <div class="left"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;花之缘,用心编织你的爱</div>
+    <ul class="right">
+        <li><a href="login">你好！请登录</a></li>
+        <li><a href="#">注册</a></li>
+        <li>|</li>
+        <li><a class="order">我的订单</a></li>
+        <li>|</li>
+        <li class="dropdown">
+            <a class="dropdown-toggle btn" data-toggle="dropdown">分享</a>
+            <ul class="list-services border-bot img-indent-bot jiathis_style_24x24 dropdown-menu" role="menu">
+                <li><a class="jiathis_button_qzone">QQ空间</a></li>
+                <li><a class="jiathis_button_tsina">新浪微博</a></li>
+                <li><a class="jiathis_button_tqq">QQ好友</a></li>
+                <li><a class="jiathis_button_weixin">微信</a></li>
+                <li><a class="jiathis_button_renren">人人</a></li>
+                <li><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></li>
+                <li><a class="jiathis_counter_style">更多分享</a></li>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            </ul>
+        <li>|</li>
+        <li><a class="guanzhu">我的关注</a></li>
+        <li>|</li>
+        <li><a class="gouwu"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;我的购物车</a></li>
+    </ul>
+</header>
+<!--导航-->
+<nav style="margin: 0">
+    <div class="nav-header">
+        <div class="nav-one">
+            <a href="/#/1"><img src="http://flower-1252579615.cossh.myqcloud.com/123.jpg" width="500px;" height="100px;"></a>
+        </div>
+        <div class="nav-two">
+            <form name="search" method="post" action="/">
+                <div class="input-group">
+                    <input name="keydword" type="text" class="form-control" placeholder="商品关键词">
+          <span class="input-group-btn">
+            <button class="btn" type="button" onClick="this.form.submit()" style="background-color: #FF6A00;width: 70px;color: white; font-size: 1.5rem ">搜索</button>
+          </span>
+                </div>
+            </form>
+        </div>
+        <div class="nav-three">
+            <span class="glyphicon glyphicon-earphone"> 17839353135&nbsp;&nbsp;</span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=710280094&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:710280094:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+    </div>
+</nav>
+<div id="cen">
+    <div>
+        <input type="text" class="form-control" id="user" placeholder="请输入用户名" onblur="textName()" >
+        <div id="nameDiv" style="color: red;font-size: 20px;line-height: 30px;"></div><br/>
+        <input type="password" class="form-control" id="pwd" placeholder="请输入密码" onblur="textPwd()"  oncontextmenu="return false" onpaste="return false">
+        <div id="pwd_prompt" style="color: red;font-size: 20px;line-height: 30px;"></div><br/>
+        <input type="password" class="form-control" id="repwd" placeholder="请再次输入密码" onblur="textRepwd()"  oncontextmenu="return false" onpaste="return false"><br/>
+        <div id="repwd_prompt" style="color: red;font-size: 20px;line-height: 30px;"></div><br/>
+        <table>
+            <tr>
+                <td>
+                    <span id="code" class="nocode" style="font-size: 30px;">验证码</span>
+                </td>
+                <td><input type="text" class="form-control input" placeholder="验证码" style="left:10px;" ></td>
+            </tr>
+        </table>
+        <br/>
+        <a href="login"><div class="btn btn-default" style="float:left ">登 录</div></a>
+        <button type="submit" class="btn btn-primary" id="check" style="float:right">注 册</button>
+    </div>
+</div>
+<canvas id="sakura" style="z-index: inherit"></canvas>
+<!-- sakura shader -->
+<script id="sakura_point_vsh" type="x-shader/x_vertex">
+uniform mat4 uProjection;
+uniform mat4 uModelview;
+uniform vec3 uResolution;
+uniform vec3 uOffset;
+uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
+uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
+
+attribute vec3 aPosition;
+attribute vec3 aEuler;
+attribute vec2 aMisc; //x:size, y:fade
+
+varying vec3 pposition;
+varying float psize;
+varying float palpha;
+varying float pdist;
+
+//varying mat3 rotMat;
+varying vec3 normX;
+varying vec3 normY;
+varying vec3 normZ;
+varying vec3 normal;
+
+varying float diffuse;
+varying float specular;
+varying float rstop;
+varying float distancefade;
+
+void main(void) {
+    // Projection is based on vertical angle
+    vec4 pos = uModelview * vec4(aPosition + uOffset, 1.0);
+    gl_Position = uProjection * pos;
+    gl_PointSize = aMisc.x * uProjection[1][1] / -pos.z * uResolution.y * 0.5;
+
+    pposition = pos.xyz;
+    psize = aMisc.x;
+    pdist = length(pos.xyz);
+    palpha = smoothstep(0.0, 1.0, (pdist - 0.1) / uFade.z);
+
+    vec3 elrsn = sin(aEuler);
+    vec3 elrcs = cos(aEuler);
+    mat3 rotx = mat3(
+        1.0, 0.0, 0.0,
+        0.0, elrcs.x, elrsn.x,
+        0.0, -elrsn.x, elrcs.x
+    );
+    mat3 roty = mat3(
+        elrcs.y, 0.0, -elrsn.y,
+        0.0, 1.0, 0.0,
+        elrsn.y, 0.0, elrcs.y
+    );
+    mat3 rotz = mat3(
+        elrcs.z, elrsn.z, 0.0,
+        -elrsn.z, elrcs.z, 0.0,
+        0.0, 0.0, 1.0
+    );
+    mat3 rotmat = rotx * roty * rotz;
+    normal = rotmat[2];
+
+    mat3 trrotm = mat3(
+        rotmat[0][0], rotmat[1][0], rotmat[2][0],
+        rotmat[0][1], rotmat[1][1], rotmat[2][1],
+        rotmat[0][2], rotmat[1][2], rotmat[2][2]
+    );
+    normX = trrotm[0];
+    normY = trrotm[1];
+    normZ = trrotm[2];
+
+    const vec3 lit = vec3(0.6917144638660746, 0.6917144638660746, -0.20751433915982237);
+
+    float tmpdfs = dot(lit, normal);
+    if(tmpdfs < 0.0) {
+        normal = -normal;
+        tmpdfs = dot(lit, normal);
+    }
+    diffuse = 0.4 + tmpdfs;
+
+    vec3 eyev = normalize(-pos.xyz);
+    if(dot(eyev, normal) > 0.0) {
+        vec3 hv = normalize(eyev + lit);
+        specular = pow(max(dot(hv, normal), 0.0), 20.0);
+    }
+    else {
+        specular = 0.0;
+    }
+
+    rstop = clamp((abs(pdist - uDOF.x) - uDOF.y) / uDOF.z, 0.0, 1.0);
+    rstop = pow(rstop, 0.5);
+    //-0.69315 = ln(0.5)
+    distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));
+}
+</script>
+<script id="sakura_point_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+
+uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
+uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
+
+const vec3 fadeCol = vec3(0.08, 0.03, 0.06);
+
+varying vec3 pposition;
+varying float psize;
+varying float palpha;
+varying float pdist;
+
+//varying mat3 rotMat;
+varying vec3 normX;
+varying vec3 normY;
+varying vec3 normZ;
+varying vec3 normal;
+
+varying float diffuse;
+varying float specular;
+varying float rstop;
+varying float distancefade;
+
+float ellipse(vec2 p, vec2 o, vec2 r) {
+    vec2 lp = (p - o) / r;
+    return length(lp) - 1.0;
+}
+
+void main(void) {
+    vec3 p = vec3(gl_PointCoord - vec2(0.5, 0.5), 0.0) * 2.0;
+    vec3 d = vec3(0.0, 0.0, -1.0);
+    float nd = normZ.z; //dot(-normZ, d);
+    if(abs(nd) < 0.0001) discard;
+
+    float np = dot(normZ, p);
+    vec3 tp = p + d * np / nd;
+    vec2 coord = vec2(dot(normX, tp), dot(normY, tp));
+
+    //angle = 15 degree
+    const float flwrsn = 0.258819045102521;
+    const float flwrcs = 0.965925826289068;
+    mat2 flwrm = mat2(flwrcs, -flwrsn, flwrsn, flwrcs);
+    vec2 flwrp = vec2(abs(coord.x), coord.y) * flwrm;
+
+    float r;
+    if(flwrp.x < 0.0) {
+        r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.36, 0.96) * 0.5);
+    }
+    else {
+        r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.58, 0.96) * 0.5);
+    }
+
+    if(r > rstop) discard;
+
+    vec3 col = mix(vec3(1.0, 0.8, 0.75), vec3(1.0, 0.9, 0.87), r);
+    float grady = mix(0.0, 1.0, pow(coord.y * 0.5 + 0.5, 0.35));
+    col *= vec3(1.0, grady, grady);
+    col *= mix(0.8, 1.0, pow(abs(coord.x), 0.3));
+    col = col * diffuse + specular;
+
+    col = mix(fadeCol, col, distancefade);
+
+    float alpha = (rstop > 0.001)? (0.5 - r / (rstop * 2.0)) : 1.0;
+    alpha = smoothstep(0.0, 1.0, alpha) * palpha;
+
+    gl_FragColor = vec4(col * 0.5, alpha);
+}
+</script>
+<!-- effects -->
+<script id="fx_common_vsh" type="x-shader/x_vertex">
+uniform vec3 uResolution;
+attribute vec2 aPosition;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    gl_Position = vec4(aPosition, 0.0, 1.0);
+    texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
+    screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
+}
+</script>
+<script id="bg_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+
+uniform vec2 uTimes;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec3 col;
+    float c;
+    vec2 tmpv = texCoord * vec2(0.8, 1.0) - vec2(0.95, 1.0);
+    c = exp(-pow(length(tmpv) * 1.8, 2.0));
+    col = mix(vec3(0.02, 0.0, 0.03), vec3(0.96, 0.98, 1.0) * 1.5, c);
+    gl_FragColor = vec4(col * 0.5, 1.0);
+}
+</script>
+<script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+/*precision mediump float;*/
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec4 col = texture2D(uSrc, texCoord);
+    gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);
+}
+</script>
+<script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+uniform vec4 uBlurDir; //dir(x, y), stride(z, w)
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec4 col = texture2D(uSrc, texCoord);
+    col = col + texture2D(uSrc, texCoord + uBlurDir.xy * uDelta);
+    col = col + texture2D(uSrc, texCoord - uBlurDir.xy * uDelta);
+    col = col + texture2D(uSrc, texCoord + (uBlurDir.xy + uBlurDir.zw) * uDelta);
+    col = col + texture2D(uSrc, texCoord - (uBlurDir.xy + uBlurDir.zw) * uDelta);
+    gl_FragColor = col / 5.0;
+}
+</script>
+<!-- effect fragment shader template -->
+<script id="fx_common_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    gl_FragColor = texture2D(uSrc, texCoord);
+}
+</script>
+<!-- post processing -->
+<script id="pp_final_vsh" type="x-shader/x_vertex">
+uniform vec3 uResolution;
+attribute vec2 aPosition;
+varying vec2 texCoord;
+varying vec2 screenCoord;
+void main(void) {
+    gl_Position = vec4(aPosition, 0.0, 1.0);
+    texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
+    screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
+}
+</script>
+<script id="pp_final_fsh" type="x-shader/x_fragment">
+#ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform sampler2D uBloom;
+uniform vec2 uDelta;
+varying vec2 texCoord;
+varying vec2 screenCoord;
+void main(void) {
+    vec4 srccol = texture2D(uSrc, texCoord) * 2.0;
+    vec4 bloomcol = texture2D(uBloom, texCoord);
+    vec4 col;
+    col = srccol + bloomcol * (vec4(1.0) + srccol);
+    col *= smoothstep(1.0, 0.0, pow(length((texCoord - vec2(0.5)) * 2.0), 1.2) * 0.5);
+    col = pow(col, vec4(0.45454545454545)); //(1.0 / 2.2)
+
+    gl_FragColor = vec4(col.rgb, 1.0);
+    gl_FragColor.a = 1.0;
+}
+</script>
+<script>
+    function textName(){
+        var user=document.getElementById("user").value;
+        var nameDiv=document.getElementById("nameDiv");
+        if(0==user.length){
+            nameDiv.innerHTML="用户名不能为空！"
+            return false;
+        }
+        var regName=/^\w{3,15}$/
+        if(!regName.test(user)){
+            nameDiv.innerHTML="用户名为3-16个字符！"
+            return false;
+        } nameDiv.innerHTML="";
+        if(regName.test(user)){
+            var dat={
+                userName:document.getElementById("user").value
+            }
+            $.post('/selectname',dat,function(res,err){
+                if(res.length!=0){
+                    nameDiv.innerHTML="用户名已使用！"
+                }
+            })
+        }
+    }
+    function textPwd(){
+        var pwd=document.getElementById("pwd").value;
+        var pwd_prompt=document.getElementById("pwd_prompt");
+        if(0==pwd.length){
+            pwd_prompt.innerHTML="密码不能为空！";
+            return false;
+        }
+        var pwd1=document.getElementById("pwd").value;
+        var pwd_prompt1=document.getElementById("pwd_prompt");
+        if(0==pwd1.length){
+            pwd_prompt1.innerHTML="密码不能为空！";
+            return false;
+        }
+        var regName=/^\w{6,18}$/;
+        if(!regName.test(pwd)){
+            pwd_prompt.innerHTML="密码为6-18个字符！";
+            return false;
+        } pwd_prompt.innerHTML="";
+    }
+    function textRepwd(){
+        var pwd=document.getElementById("pwd").value;
+        var repwd=document.getElementById("repwd").value;
+        if(repwd!=pwd){
+            document.getElementById("repwd_prompt").innerHTML="密码不一致！";
+            return false
+        }document.getElementById("repwd_prompt").innerHTML=""
+    }
+</script>
+<script src="/javascripts/index.js"></script>
+</body>
+</html>

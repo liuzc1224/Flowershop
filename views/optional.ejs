@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link type="text/css" rel="stylesheet" href="http://img02.hua.com/pc/assets/css/common.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href='/stylesheets/bootstrap.css'>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <!--<script src="//cdn.bootcss.com/angular.js/1.3.20/angular.min.js"></script>-->
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <style>
+        table{margin: 0 auto}
+    </style>
+</head>
+<body style="margin: 0 auto">
+<!--<div ng-include="$root.nav" style="display: inline-block;width: 100%;padding: 0"></div>-->
+<div style="margin: 0;top:-5px;position: relative">
+    <!-- 大图轮播 -->
+    <div id="flowerCarousel" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="#" target="_blank"><img src="http://img02.hua.com/pc/pimg/banner_Fzixuan.jpg" alt="自选鲜花专栏" width="100%"></a>
+            </div>
+        </div>
+    </div>
+    <div class="brand-wraper">
+        <div class="hd">
+            <strong>自选鲜花提示:</strong>
+        </div>
+    </div>
+    <div align="left" style="line-height:22px;font-size:12px;padding-bottom:15px;">
+        （1）以下价格为平日订购价；<br>
+        （2）自助选花金额必须在<font color="#FF0000">90元</font>以上，才会作为有效订单处理；<br>
+        （3）郁金香开花季节：12月至次年3、4月；马蹄莲开花季节：11月~6月，选择此两种花材请最少提前一天订购，最好咨询客服再订购。其他花材一般全年都会有。
+    </div>
+        <table width="98%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse">
+            <tbody>
+            <tr align="center" bgcolor="#77aa33">
+                <td height="22" colspan="5" valign="center" bgcolor="#F6F6F6">
+                    <font color="#666666"><strong>选择主花材</strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010001.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010001">红玫瑰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010001_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010002.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010002">白玫瑰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010002_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010003.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010003">粉玫瑰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010003_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010004.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010004">黄玫瑰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010004_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010005.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010005">香槟玫瑰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010005_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010011.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010011">火百合</font> ￥28/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010011_28">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010012.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010012">白香水百合</font>￥30/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010012_30">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010013.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010013">粉香水百合</font>￥30/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010013_30">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010014.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010014">白百合</font> ￥15/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010014_15">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010015.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010015">黄百合</font> ￥20/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010015_20">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010021.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010021">红康乃馨</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010021_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010022.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010022">粉康乃馨</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010022_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010023.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010023">黄康乃馨</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010023_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010031.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010031">红郁金香</font> ￥20/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010031_20">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010032.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010032">粉郁金香</font> ￥20/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010032_20">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010041.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010041">橙扶郎</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010041_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010042.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010042">红扶郎</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010042_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010043.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010043">粉扶郎</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010043_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010044.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010044">黄扶郎</font> ￥5/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010044_5">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010051.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010051">红剑兰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010051_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010052.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010052">粉剑兰</font> ￥8/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010052_8">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010061.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010061">天堂鸟</font> ￥22/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010061_22">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010062.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010062">小鸟</font> ￥15/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010062_15">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010063.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010063">红掌</font> ￥25/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010063_25">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img src="http://img02.hua.com/pc/florist/images/2010064.jpg" alt="枝" width="80" height="80" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010064">马蹄莲</font> ￥12/枝
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb1_2010064_12">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    <br>
+        <table width="98%" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse" bordercolor="#CCCCCC">
+            <tbody>
+            <tr align="center" bgcolor="#77aa33">
+                <td height="22" colspan="5" valign="center" bgcolor="#F6F6F6"><strong><font color="#666666">选择配花材</font></strong></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img alt="扎" src="http://img02.hua.com/pc/florist/images/2010071.jpg" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010071">满天星</font>(扎)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥14
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb2_2010071_14">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img alt="扎" src="http://img02.hua.com/pc/florist/images/2010072.jpg" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010072">黄莺</font>(扎)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥16
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb2_2010072_16">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img alt="扎" src="http://img02.hua.com/pc/florist/images/2010073.jpg" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010073">勿忘我</font>(扎)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥16
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb2_2010073_16">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img alt="扎" src="http://img02.hua.com/pc/florist/images/2010074.jpg" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010074">情人草</font>(扎)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥16
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb2_2010074_16">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td align="center">
+                    <table cellspacing="0" cellpadding="0" width="112" border="0">
+                        <tbody>
+                        <tr>
+                            <td valign="center" align="center" width="100%" height="90">
+                                <img alt="扎" src="http://img02.hua.com/pc/florist/images/2010075.jpg" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" height="20">
+                                <font id="lb_2010075">其他配叶</font>(扎)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥18
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                数量：
+                                <input maxlength="5" size="5" value="0" name="tb2_2010075_18">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <table width="98%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse">
+            <tbody>
+            <tr align="center" bgcolor="#77aa33">
+                <td height="22" colspan="4" valign="center" bgcolor="#F6F6F6"><strong><font color="#666666">选择包装方式（含包装、设计及服务费）</font></strong></td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" width="100%" height="20">
+                                <input id="rb_2010081_50" name="diypacking" type="radio" value="2010081" checked="">
+                                标准包装（花束）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥<font id="2010081" color="#FF0000">50</font>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" width="100%" height="20">
+                                <input id="rb_2010082_70" name="diypacking" type="radio" value="2010082">
+                                豪华包装（花束）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥<font id="2010082" color="#FF0000">70</font>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" width="100%" height="20">
+                                <input id="rb_2010083_68" name="diypacking" type="radio" value="2010083">
+                                玻璃瓶
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥<font id="2010083" color="#FF0000">68</font>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td class="aaa" valign="center" align="middle" width="100%" height="20">
+                                <input id="rb_2010084_60" name="diypacking" type="radio" value="2010084">
+                                花篮
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center" align="middle" height="20">
+                                ￥<font id="2010084" color="#FF0000">60</font>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <table style="border-collapse:collapse" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+            <tr align="center" bgcolor="#77aa33">
+                <td colspan="5" bgcolor="#F6F6F6" valign="center" height="22"><font color="#666666"><strong>您选择的鲜花</strong></font></td>
+            </tr>
+            </tbody>
+        </table>
+        <table style="border-collapse:collapse" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" width="98%">
+        <tbody>
+        <tr>
+            <td align="center" bgcolor="#ffffff">
+                <br>
+                <table style="border-collapse:collapse" border="1" bordercolor="#CCCCCC" cellpadding="5" cellspacing="0" width="80%">
+                    <tbody>
+                    <tr>
+                        <td width="40%" id="sel_huas"></td>
+                        <td id="sel_huas_sum"></td>
+                    </tr>
+                    <tr>
+                        <td id="sel_pack">
+                            标准包装（花束）
+                        </td>
+                        <td id="sel_pack_sum">￥50</td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            合计价格：<font id="sel_all_sum" color="red">50</font>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+
+                <a href="#" target="_blank" onclick="return submitForm1();"><img src="http://img02.hua.com/pc/florist/pic/buy.gif" align="absmiddle" border="0"></a>
+                <button type="reset" onclick="return resetForm1();" name="Submit2">重新定制</button>
+                <input type="hidden" id="sel_pps" name="sel_pps" width="100%" value="">
+            </td>
+        </tr>
+        <tr>
+            <td style="line-height:150%" height="30">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    var alltotal = 0;
+    $(function () {
+        page_load_1();
+        stat1();
+    });
+    function page_load_1() {
+        $("input[name^='tb1_']").keyup(function () {
+            stat1();
+        });
+        $("input[name^='tb2_']").keyup(function () {
+            stat1();
+        });
+        $("input:radio").click(function () {
+            stat1();
+        });
+    }
+    function stat1() {
+        var sum1 = 0;
+        var selHuas = "";
+        var selPps = "";
+        $("input[name^='tb1_']").each(function (i, o) {
+            var v1 = parseFloat($(o).val());
+            if (v1 > 0) {
+                var arr1 = $(o).attr("name").split('_');
+                selHuas += "+" + $("#lb_" + arr1[1]).text() + v1 + "枝";
+                sum1 += (v1 * parseFloat(arr1[2]));
+                selPps += arr1[1] + "," + v1 + ";";
+            }
+        });
+        $("input[name^='tb2_']").each(function (i, o) {
+            var v1 = parseFloat($(o).val());
+            if (v1 > 0) {
+                var arr1 = $(o).attr("name").split('_');
+                selHuas += "+" + $("#lb_" + arr1[1]).text() + v1 + "扎";
+                sum1 += (v1 * parseFloat(arr1[2]));
+                selPps += arr1[1] + "," + v1 + ";";
+            }
+        });
+
+        var arr2 = $("input:checked").attr("id").split("_");
+        $("#sel_pack").text($("input:checked").parent().text());
+        $("#sel_pack_sum").text("￥" + arr2[2]);
+        //selPps += arr2[1] + ",1;";
+
+        selHuas = selHuas.substring(1);
+        if (sum1 > 0) {
+            $("#sel_huas").text(selHuas);
+            $("#sel_huas_sum").text("￥" + sum1);
+        } else {
+            $("#sel_huas").text("");
+            $("#sel_huas_sum").text("");
+        }
+        var all1 = sum1 + parseFloat(arr2[2]);
+        $("#sel_all_sum").text("￥" + all1 + "元");
+        alltotal = all1;
+        $("#sel_pps").val(selPps);
+    }
+    function submitForm1() {
+        if ($("#sel_pps").val() == "") {
+            alert("请选择主花材和配花材！");
+        } else if (alltotal < 90)
+        {
+            alert("自选鲜花总价不得小于90元，请重新选购！");
+        }
+        else {
+//            console.log($("#sel_huas").html());
+//            console.log($("#sel_pack").html());
+            var name=$("#sel_huas").html()+'-'+$("#sel_pack").html().replace(/^\s+|\s+$/g, "");
+            var val=$("#sel_all_sum").html();
+            console.log(name,"123");
+            console.log(parseInt(val.substring('1',val.length)));
+            var dat={
+                UserId:localStorage.uid,
+
+            }
+        }
+        return false;
+    }
+    function resetForm1() {
+       $('input').val('0');
+        $('rb_2010081_50').checked=true;
+        stat1();
+    }
+</script>
+
+<!--<script type="text/javascript" src="http://v3.jiaathis.common/code/jia.js" charset="utf-8"></script>-->
+</body>
+</html>

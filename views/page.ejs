@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link type="text/css" rel="stylesheet" href="http://img02.hua.com/pc/assets/css/common.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href='/stylesheets/bootstrap.css'>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="//cdn.bootcss.com/angular.js/1.3.20/angular.min.js"></script>-->
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <style>
+        body{margin: 0;
+            padding: 0}
+        .more{float:right}
+    </style>
+</head>
+<body>
+<!-- 大图轮翻 -->
+<div id="fullCarousel" class="carousel slide carousel-fade" style="padding: 0;">
+    <ol class="carousel-indicators">
+        <li data-target="#fullCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#fullCarousel" data-slide-to="1"></li>
+        <li data-target="#fullCarousel" data-slide-to="2"></li>
+        <li data-target="#fullCarousel" data-slide-to="3"></li>
+        <li data-target="#fullCarousel" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="fill" style="background-image:url('http://img02.hua.com/banner/xianhua_pc_20170407.jpg');"><a href="/#/2" target="_blank"></a></div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://img02.hua.com/banner/ysh_large_Capricorn.jpg');"><a href="/#/5" target="_blank"></a></div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://img02.hua.com/pc/pimg/banner_song_03.jpg');"><a href="/#/3" target="_blank"></a></div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://img02.hua.com/pc/pimg/banner_song_04.jpg');"><a href="/#/6" target="_blank"></a></div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://img02.hua.com/pc/pimg/banner_song_05.jpg');"><a href="/#/6" target="_blank"></a></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#fullCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#fullCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- 大图轮翻 End -->
+<section style="margin-top: 10px;">
+        <div class="time-server">
+            <div class="title">
+                <p class="glyphicon glyphicon-time"></p>
+                <p>限时推荐</p>
+            </div>
+            <ul class="product-list">
+                <li><a href="breadcrumbs?usid=9012165" target="_blank"><img src="http://img02.hua.com/tuijian/xianshi_1_170122.jpg" alt="" width="240" height="198"></a></li>
+                <li><a href="breadcrumbs?usid=9012112.html" target="_blank"><img src="http://img02.hua.com/tuijian/xianshi_2_161129.jpg" alt="" width="240" height="198"></a></li>
+                <li><a href="breadcrumbs?usid=1073092" target="_blank"><img src="http://img02.hua.com/tuijian/xianshi_3_170317.jpg" alt="" width="240" height="198"></a></li>
+                <li><a><img src="http://img02.hua.com/pc/pimg/comic_choose_flowers.jpg" alt="" width="240" height="198"></a></li>
+            </ul>
+        </div>
+        <!--第一层-->
+        <div class="floor f1">
+            <div class="ht">
+                <h3><a href="/#/5">爱情鲜花</a></h3>&nbsp;&nbsp;<span>送·让你怦然心动的人</span>
+                <a class="more" href="/#/5" target="_blank">更多爱情鲜花 &gt;&gt;</a>
+            </div>
+            <div class="bt">
+                <div class="bt-l">
+                    <div class="banner-box">
+                        <a href="/#/5" target="_blank"><img src="http://img02.hua.com/pc/pimg/banner_love.jpg" height="438" width="243"></a>
+                    </div>
+                    <a class="banner-link" href="/#/5" target="_blank">爱情鲜花专区 &gt;&gt;</a>
+                </div>
+                <ul class="floor-products">
+                    <%
+                    if( Love != null){
+                        Love.forEach(function(Flower){
+                    %>
+                    <li>
+                        <a href="breadcrumbs?usid=<%=Flower.CommodityId%>" target="_blank">
+            <span class="img-box" href="breadcrumbs?usid=<%=Flower.CommodityId%>">
+                <img src="<%=Flower.ImgPath%>" height="240" width="220">
+            </span>
+                            <span class="product-title">鲜花 · <%=(Flower.FlowerName).substring(0,(Flower.FlowerName).indexOf('-'))%></span>
+                            <p class="price">
+                                <span class="price-sign">¥</span>
+                                <span class="price-num"><%=Flower.FlowerPrice%></span>
+                            </p>
+                        </a>
+                    </li>
+                    <%
+                    });
+
+                    }
+                    %>
+                </ul>
+            </div>
+        </div>
+        <!--第一层完-->
+        <!--第二层-->
+        <div class="floor f2">
+            <div class="ht">
+                <h3><a href="elder" target="_blank">送长辈鲜花</a></h3>&nbsp;&nbsp;<span>赠·父母/恩师/长辈</span>
+                <a class="more" href="elder" target="_blank">更多送长辈鲜花 &gt;&gt;</a>
+            </div>
+            <div class="bt">
+                <div class="bt-l">
+                    <div class="banner-box">
+                        <a href="elder" target="_blank"><img src="http://img02.hua.com/pc/pimg/banner_elder.jpg" height="438" width="243"></a>
+                    </div>
+                    <a class="banner-link" href="elder" target="_blank">送长辈鲜花专区 &gt;&gt;</a>
+                </div>
+                <ul class="floor-products">
+
+                    <%
+                    if( Elder != null){
+                    Elder.forEach(function(Flower){
+                    %>
+                    <li>
+                        <a href="breadcrumbs?usid=<%=Flower.CommodityId%>" target="_blank">
+            <span class="img-box" href="breadcrumbs?usid=<%=Flower.CommodityId%>">
+                <img src="<%=Flower.ImgPath%>" height="240" width="220">
+            </span>
+                            <span class="product-title">鲜花 · <%=(Flower.FlowerName).substring(0,(Flower.FlowerName).indexOf('-'))%></span>
+                            <p class="price">
+                                <span class="price-sign">¥</span>
+                                <span class="price-num"><%=Flower.FlowerPrice%></span>
+                            </p>
+                        </a>
+                    </li>
+                    <%
+                    });
+
+                    }
+                    %>
+
+                </ul>
+            </div>
+        </div>
+        <!--第二层完-->
+        <!--第三层-->
+        <div class="floor f3">
+            <div class="ht">
+                <div class="more" href="/#/6" target="_blank">更多永生花 &gt;&gt;</div>
+                <h3><a href="/#/6" target="_blank">永生花</a></h3>&nbsp;&nbsp;<span>许·她一生承诺</span>
+            </div>
+            <div class="bt">
+                <div class="bt-l">
+                    <div class="banner-box">
+                        <a href="/#/6" target="_blank"><img src="http://img02.hua.com/pc/pimg/banner_song.jpg" height="438" width="243"></a>
+                    </div>
+                    <a class="banner-link" href="/#/6" target="_blank">永生花专区 &gt;&gt;</a>
+                </div>
+                <ul class="floor-products">
+
+                    <%
+                    if( Immortal != null){
+                    Immortal.forEach(function(Flower){
+                    %>
+                    <li>
+                        <a href="breadcrumbs?usid=<%=Flower.CommodityId%>" target="_blank">
+            <span class="img-box" href="breadcrumbs?usid=<%=Flower.CommodityId%>">
+                <img src="<%=Flower.ImgPath%>" height="240" width="220">
+            </span>
+                            <span class="product-title">永生花 · <%=Flower.FlowerName%></span>
+                            <p class="price">
+                                <span class="price-sign">¥</span>
+                                <span class="price-num"><%=Flower.FlowerPrice%></span>
+                            </p>
+                        </a>
+                    </li>
+                    <%
+                    });
+
+                    }
+                    %>
+                </ul>
+            </div>
+        </div>
+        <!--第三层完-->
+    </section>
+<script src="/javascripts/jquery-3.1.0.js"></script>
+<script src="/javascripts/bootstrap.js"></script>
+<script>
+    $(function() {
+        // 大图轮翻(5秒)
+        $('#fullCarousel').carousel({ interval: 3000 });
+        // 大图鼠标移到小圆点轮翻
+        $("#fullCarousel>ol>li").hover(function () {
+            var index = $("#fullCarousel ol li").index(this);
+            $("#fullCarousel").carousel(index);
+        });
+    });
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link type="text/css" rel="stylesheet" href="http://img02.hua.com/pc/assets/css/common.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="icon" href="/images/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <style>
+        table,#jiesuan{
+            padding: 0;
+            margin: 0;
+            border:  1px #E5E5E5 solid;
+        }
+        .ico-minus{
+            width: 9px;
+            height: 9px;
+        }
+        #jiesuan{
+           width:80%;
+            margin: 0 auto
+        }
+        .btn-lg{
+            height: 50px;;
+            background-color: #FF6A00;
+            color: white;
+            float: right;
+            position: relative;
+
+        }
+        .btn-lg:hover{
+            color: white;
+        }
+        .set-stat{
+            position: relative;
+            left:200px;
+            display: inline;
+        }
+        .Totalamount{
+            position: relative;
+            left:10px;
+            display: inline;
+            font-size: 2rem;
+            font-weight: bolder;
+            color: #FF6A00;
+        }
+    </style>
+</head>
+<body>
+<header class="header-nav">
+    <div class="left"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;花之缘,用心编织你的爱</div>
+    <ul class="right">
+        <li id="my"><a href="login">你好,请登录</a></li>
+        <li><a href="zhuce">注册</a></li>
+        <li>|</li>
+        <li><a class="order">我的订单</a></li>
+        <li>|</li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">分享</a>
+            <ul class="list-services border-bot img-indent-bot jiathis_style_24x24 dropdown-menu" role="menu">
+                <li><a class="jiathis_button_qzone">QQ空间</a></li>
+                <li><a class="jiathis_button_tsina">新浪微博</a></li>
+                <li><a class="jiathis_button_tqq">QQ好友</a></li>
+                <li><a class="jiathis_button_weixin">微信</a></li>
+                <li><a class="jiathis_button_renren">人人</a></li>
+                <li><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></li>
+                <li><a class="jiathis_counter_style">更多分享</a></li>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            </ul>
+        <li>|</li>
+        <li><a class="guanzhu">我的关注</a></li>
+        <li>|</li>
+        <li><a class="gouwu"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;我的购物车</a></li>    </ul>
+</header>
+<!--导航-->
+<nav style="margin: 0">
+    <div class="nav-header">
+        <div class="nav-one">
+            <a href="/#/1"><img src="http://flower-1252579615.cossh.myqcloud.com/123.jpg" width="500px;" height="100px;"></a>        </div>
+        <div class="nav-two">
+            <form name="search" method="post" action="/search/">
+                <div class="input-group">
+                    <input name="keydword" type="text" class="form-control" placeholder="商品关键词">
+          <span class="input-group-btn">
+            <button class="btn" type="button" onClick="this.form.submit()" style="background-color: #FF6A00;width: 70px;color: white; font-size: 1.5rem ">搜索</button>
+          </span>
+                </div>
+            </form>
+        </div>
+        <div class="nav-three">
+            <span class="glyphicon glyphicon-earphone"> 17839353135&nbsp;&nbsp;</span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=710280094&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:710280094:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+    </div>
+</nav>
+<br/>
+<div class="cent">
+<table class="table table-hover" style="width: 80%;margin: 0 auto">
+    <thead style="background:#E5E5E5">
+    <tr style="font-weight: bold;font-size: 1.5rem">
+        <th>商品名称</th>
+        <th>价格</th>
+        <th>数量</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+    if( Order != null){
+    Order.forEach(function(Flower){
+    %>
+    <tr>
+        <td class="ni">
+            <div style="display: none" class="CommodityId"><%=(Flower.CommodityId)%></div>
+            <a href="breadcrumbs?usid=<%=Flower.CommodityId%>"><img src="<%=(Flower.ImgPath)%>" height="70px" width="70px;"></a>
+            &nbsp;&nbsp;&nbsp;<a href="breadcrumbs?usid=<%=Flower.CommodityId%>"><%=Flower.FlowerName%></a>
+        </td>
+        <td class=price" style="color: #FF6A00;font-weight: bolder;line-height: 70px; width: 150px;">¥<%=Flower.FlowerPrice%></td>
+        <td style="width: 150px;">
+                <button class="btn btn-default sub" style="margin-top:20px;position: absolute;display: block;font-size: 15px;font-weight: bold" >-</button>
+                <input type="text" class="form-control input-sm" value="<%=Flower.Number%>" maxlength="2" style="margin-top:23px;width: 40px;left: 32px;position: relative;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                <button class="btn btn-default add" style="margin-top:-33px;left: 73px;position: relative;display: block;font-size:15px;font-weight: bold">+</button>
+                <div class="pr" style="display: none"><%=Flower.FlowerPrice%></div>
+        </td>
+        <td style="width: 150px;"><div class="btn btn-default delete" style="margin-top:20px;" onclick="javascript:delet()">删除</div></td>
+    </tr>
+    <%
+    });
+    }
+    %>
+    </tbody>
+</table>
+<br/>
+    <table class="table table-bordered" style="width: 80%;margin: 0 auto">
+        <tr>
+            <td style="text-align: right;line-height: 20px;font-weight: bold;width:150px" >联系方式：</td>
+            <td>
+                <input type="text"  name="phone" />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;line-height: 20px;font-weight: bold">有什么要说的：</td>
+            <td>
+                <textarea name="text" maxlength="249"  draggable='false' style="resize:none;width: 100%" id="syno"  placeholder="最多249字"></textarea>
+            </td>
+        </tr>
+    </table>
+    <br/>
+<div id='jiesuan' >
+    <div class="set-info">
+        <a class="back" href="/#/1" style="width:90px; line-height: 50px;"><span class="ico ico-back"></span>继续挑选</a>
+        <div class="set-stat">
+            应付金额:
+            <div class="Totalamount">
+                <span class="price-sign">¥</span>
+                <span class="price-num"></span>
+            </div>
+        </div>
+        <div class="btn btn-lg" type="button" onclick="DoSubmit()">去结算</div>
+    </div>
+</div>
+<hr/>
+</div>
+<script src="/javascripts/bootstrap.js"></script>
+<script>
+    $(function(){
+        var name=localStorage.name;
+        if(name==undefined){
+            $('#my').html('<a href="login">你好,请登录</a>');
+        }else{
+
+            $('#my').html('<a href="guanzhu?usid='+localStorage.uid+'">欢迎  '+name+'</a>');
+        }
+        Totalamount();
+        var uid=localStorage.uid;
+        if(uid!=''||uid!='undefined') {
+            $('.gouwu').click(function () {
+                location.href = 'order?id=' + uid;
+            });
+            $('.order').click(function () {
+                location.href = 'Settlement?id=' + uid;
+            });
+            $('.guanzhu').click(function () {
+                location.href = 'my?id=' + uid;
+            });
+        }
+        else{
+            alert('请先登录')
+        }
+    })
+    $('.sub').click(function(){
+        var input=$(this).next('input')
+        var val=parseFloat(input.val());
+        val = val < 2 ? 2 : val;
+        input.val (val - 1);
+        var inp=input.val();
+        var pre=$(this).siblings(".pr").html();
+        var price=$(this).parent().prev('td');
+        var id=$(this).parent().siblings(".ni").children('div:first').html();
+        price.html("¥"+pre*inp);
+        Totalamount();
+        var dat={
+            id:id,
+            uid:localStorage.uid,
+            Number:inp
+        }
+        console.log(dat);
+        $.post('/updateorder',dat,function(){})
+    })
+    $('.add').click(function(){
+        var input=$(this).prev('input')
+        var val=parseFloat(input.val());
+        val = val >98 ? 98 : val;
+        input.val (val + 1);
+        var inp=input.val();
+        var pre=$(this).siblings(".pr").html();
+        var price=$(this).parent().prev('td');
+        var id=$(this).parent().siblings(".ni").children('div:first').html();
+        price.html("¥"+pre*val);
+        Totalamount();
+        var dat={
+            id:id,
+            uid:localStorage.uid,
+            Number:inp
+        }
+        console.log(dat);
+        $.post('/updateorder',dat,function(){})
+    })
+    $('.input-sm').change(function(){
+        var val=$(this).val();
+        var pre=$(this).siblings(".pr").html();
+        var price=$(this).parent().prev('td');
+        var id=$(this).parent().siblings(".ni").children('div:first').html();
+        price.html("¥"+pre*val);
+        Totalamount();
+        var dat={
+            id:id,
+            uid:localStorage.uid,
+            Number:val
+        }
+        console.log(dat);
+        $.post('/updateorder',dat,function(){})
+    })
+    function Totalamount(){
+        var mn=0;
+        var mon=$('tbody')[0];
+        if(mon.rows.length==0){
+            $('.cent').html('<div class="empty_info"><img src="http://img02.hua.com/pc/images/gwc_k2.jpg" alt="这里什么都没有啊～" border="0"><a href="/#/1"><div class="btn" style="background-color: #FF6A00;color: white;margin: 0 auto;position: absolute;margin-left: -440px;margin-top: 120px;">去逛逛<span class="glyphicon glyphicon-chevron-right"></span></div></a></div>');
+        }else {
+            for(var i=0;i<mon.rows.length;i++){
+                var pric=mon.rows[i].cells[1].innerHTML;
+                mn+=parseInt(pric.substring('1',pric.length));
+                $('.price-num').html(mn);
+            }
+        }
+    }
+    function delet(){
+        var tname;
+        if(!e){
+            var e = window.event;
+        }
+        //获取事件点击元素
+        var targ = e.target;
+        //获取元素名称
+        tname=targ.parentNode.parentNode.cells[0].childNodes[1].innerHTML;
+        var cente=targ.parentNode.parentNode;
+        cente.remove();
+        console.log("图片",tname);
+        var dat={
+            UserId:localStorage.uid,
+            CommodityId:tname
+        }
+        $.post('/deleteorder',dat,function(res,err){})
+        Totalamount();
+    }
+    function DoSubmit(){
+        var mon=$('tbody')[0];
+				console.log(mon);
+        var or=new Date().getTime();
+        var OrderId=(localStorage.uid).substring('0',1)+or
+        var time=CurentTime();
+        for(var i=0;i<mon.rows.length;i++){
+                var name=mon.rows[i].cells[0].childNodes[1].innerHTML;
+                var dat={
+                CommodityId:name,
+                UserId:localStorage.uid,
+                OrderId:OrderId
+                }
+            console.log(dat);
+                $.post('/jiesuan1',dat,function(){})
+        }
+        var da={
+            UserId:localStorage.uid,
+            OrderTime:time,
+            OrderId:OrderId,
+            OrderPrice:$('.price-num').html()
+        }
+        console.log(da);
+        $.post('/jiesuan2',da,function(){})
+        var uid=localStorage.uid;
+        location.href='Settlement?uid='+uid;
+    }
+    function CurentTime() {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+
+        var clock = year + "-";
+
+        if(month < 10)
+            clock += "0";
+
+        clock += month + "-";
+
+        if(day < 10)
+            clock += "0";
+
+        clock += day + " ";
+
+        if(hh < 10)
+            clock += "0";
+
+        clock += hh + ":";
+        if (mm < 10) clock += '0';
+        clock += mm;
+        return(clock);
+    }
+</script>
+</body>
+</html>
